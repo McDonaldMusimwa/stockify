@@ -1,0 +1,9 @@
+.Main{
+    display: flex;
+    flex-direction: row;
+}
+
+.Logo{
+    width: 40%;
+    margin-left: 2rem;
+}

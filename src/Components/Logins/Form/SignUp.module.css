@@ -1,0 +1,50 @@
+.input {
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+  text-align: left;
+}
+
+.input label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.input input {
+  font: inherit;
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.input input:focus {
+  outline: none;
+  border-color: #4f005f;
+}
+.Main {
+  margin-left: 4rem;
+  width: 40%;
+}
+
+.Button {
+  display: block;
+  margin-top: 1rem;
+  width: 100%;
+  border: 1px black solid;
+  background-color: #008cba;
+}
+.button {
+  display: block;
+  margin-top: 1rem;
+  width: 100%;
+  border: 1px black solid;
+
+  text-align: center;
+}
+.googleicon {
+  width: 7%;
+}
