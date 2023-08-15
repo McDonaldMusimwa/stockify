@@ -1,13 +1,14 @@
 //import React from 'react'
-import Logo from '../../assets/logo.jpg'
+import Logo from '../../assets/logo.jpg';
 import LoginForm from "./Form/LoginForm"
 import styles from './Login.module.css'
 
-const Login = () => {
+const Login = (props) => {
+console.log(props.onLogIn)
   return (
     <div className={styles.Main}>
         <img className={styles.Logo} src={Logo} alt='logo' />
-        <LoginForm />
+        <LoginForm onLogIn={props.onLogIn}/>
        
 
     </div>

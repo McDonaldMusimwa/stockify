@@ -1,0 +1,44 @@
+/* NavBar.module.css */
+.NavMain {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20%; /* Adjust the width to your preference */
+  height: 100vh; /* Set the height to full viewport height */
+  background-color: #f0f0f0; /* Set your desired background color */
+  text-align: left;
+}
+.NavMain img {
+  width: 50px;
+  margin: 5px;
+  top: 5px;
+}
+
+.NavTop {
+  padding: 20px;
+}
+
+.NavTop a {
+  display: block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.NavBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+}
+
+.NavBottom a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #333;
+  margin: 2px;
+}
+ .icon{
+    margin-right: 10px;
+ }

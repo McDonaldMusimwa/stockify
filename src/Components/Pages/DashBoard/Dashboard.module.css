@@ -1,0 +1,28 @@
+/* Dashboard.module.css */
+.DashboardMain {
+    margin: 0;
+    width: 95vw;
+  
+    height: 90vh; /* 100% of the viewport height */
+  }
+  
+  .SearchBar {
+    height: 10vh;
+    margin-left: 1rem; /* 10% of the viewport height */
+  }
+  
+  .NavBar {
+    flex: 1; /* Take the remaining space, 20% of the width */
+    background-color: #f0f0f0; /* Add any other styles for the NavBar */
+  }
+  
+  .Dashboard {
+    flex: 1; /* Take the remaining space, 90% of the height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Add any other styles for the Dashboard */
+    width: 80vw; /* 80% of the viewport width */
+    margin: 0 auto; /* To center the content horizontally */
+  }
+  
