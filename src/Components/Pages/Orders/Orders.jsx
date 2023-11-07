@@ -1,8 +1,8 @@
-
+import styles from './Orders.module.css';
 
 const Orders = () => {
   return (
-    <div>
+    <div className={styles.Home}>
         Orders</div>
   )
 }

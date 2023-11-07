@@ -1,0 +1,7 @@
+.Category{
+    display: flex;
+    flex-direction: column;
+}
+.span2{
+    font-weight: bold;
+}

@@ -1,0 +1,4 @@
+.ProductContainer{
+    display: flex;
+    flex-direction: row;
+}

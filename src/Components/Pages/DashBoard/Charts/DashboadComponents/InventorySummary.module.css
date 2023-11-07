@@ -1,0 +1,12 @@
+.InventorySummary{
+    display:flex ;
+    flex-direction: row;
+}
+
+h2{
+    margin: 5px;
+}
+.InventoryContainer{
+    display: flex;
+    flex-direction: row;
+}

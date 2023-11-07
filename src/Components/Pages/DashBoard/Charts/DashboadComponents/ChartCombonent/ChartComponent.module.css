@@ -1,0 +1,36 @@
+.Container{
+  padding: 10px;
+  height: 20%;
+}
+.Font {
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  
+}
+
+.Font p {
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.SalesItem {
+  /* Add styles for individual sales items */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Add any other styles for individual sales items */
+}
+.SalesItem2 {
+    /* Add styles for individual sales items */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Add any other styles for individual sales items */
+  }
+  
+
+img {
+  width: 25px;
+  }
+  

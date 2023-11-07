@@ -1,0 +1,32 @@
+.TotalProducts {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  padding: 2px;
+  height: 50px;
+  width: 150px;
+}
+div {
+  font-weight: 200px;
+}
+.Figures {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  font-size: 14px;
+}
+
+.Description {
+  display: flex;
+  flex-direction: row;
+}
+.span2 {
+  font-weight: bold;
+  margin:10px 10px;
+  
+  
+}
+.span {
+ margin: 2px;
+  color: rgb(173, 172, 172);
+}

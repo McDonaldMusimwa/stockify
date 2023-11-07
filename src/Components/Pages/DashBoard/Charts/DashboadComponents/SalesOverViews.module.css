@@ -1,16 +1,18 @@
 /* SalesOverViews.module.css */
 .Sales {
   /* Your existing styles for the card container */
-  width: 80px;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  background-color: white;
+
+  display: grid;
+  grid-template-rows: 50% 50%;
+ 
   color: black;
-  padding: 10px;
-  left: 5;
-  top: 5;
+  
+ 
   /* Add any other styles for the card container here */
+} 
+.Sales h2{
+  display: block;
+  margin: 25px 5px ;
 }
 
 .SalesContainer {
@@ -20,10 +22,3 @@
   /* Add any other styles for the container of sales items */
 }
 
-.SalesItem {
-  /* Add styles for individual sales items */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Add any other styles for individual sales items */
-}

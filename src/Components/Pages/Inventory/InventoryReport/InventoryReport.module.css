@@ -1,0 +1,40 @@
+.Hometop {
+  display: flex;
+  flex-direction: row;
+  height: 5vh;
+  margin-left: 10%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.Home {
+  height: 60vh;
+  margin-left: 10%;
+  margin-top: 2%;
+  border: 1px solid black;
+  overflow-y: auto;
+}
+
+.Home thead th {
+  position: sticky;
+  top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 8px 15px;
+  border: 2px solid #ddd;
+}
+
+th {
+  background-color: #b8b6b6;
+  text-align: left;
+}
+button {
+  padding: 10px;
+  background: aqua;
+  border-radius: 5px;
+}

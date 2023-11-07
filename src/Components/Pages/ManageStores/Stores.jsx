@@ -1,8 +1,8 @@
-
+import styles from './Stores.module.css';
 
 const Stores = () => {
   return (
-    <div>
+    <div className={styles.Home}>
         
         Stores</div>
   )

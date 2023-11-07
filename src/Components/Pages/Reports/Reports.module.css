@@ -1,0 +1,11 @@
+.Home{
+    margin-top: 8%;
+    width: 70vw;
+    margin-left: 30%;
+    height: 90vh; /* 100% of the viewport height */
+}
+
+.HomeTope{
+    display: flex;
+    flex-direction: row;
+}

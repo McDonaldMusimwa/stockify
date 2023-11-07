@@ -1,0 +1,102 @@
+[
+    {
+      "productid": 1,
+      "productName": "Product 1",
+      "productCost": 5,
+      "productCount": 50,
+      "productexpiryDate": "31/10/2023",
+      "starttime": "12:30",
+      "productThreshold": 5
+    },
+    {
+      "productid": 2,
+      "productName": "Product 2",
+      "productCost": 10,
+      "productCount": 0,
+      "productexpiryDate": "15/11/2023",
+      "starttime": "09:45",
+      "productThreshold": 3
+    },
+    {
+      "productid": 3,
+      "productName": "Product 3",
+      "productCost": 8,
+      "productCount": 35,
+      "productexpiryDate": "22/12/2023",
+      "starttime": "14:15",
+      "productThreshold": 8
+    },
+    {
+      "productid": 4,
+      "productName": "Product 4",
+      "productCost": 12,
+      "productCount": 15,
+      "productexpiryDate": "10/09/2023",
+      "starttime": "11:30",
+      "productThreshold": 2
+    },
+    {
+      "productid": 5,
+      "productName": "Product 5",
+      "productCost": 6,
+      "productCount": 42,
+      "productexpiryDate": "28/07/2023",
+      "starttime": "10:00",
+      "productThreshold": 7
+    },
+    {
+      "productid": 6,
+      "productName": "Product 6",
+      "productCost": 7,
+      "productCount": 28,
+      "productexpiryDate": "03/05/2023",
+      "starttime": "13:20",
+      "productThreshold": 4
+    },
+    {
+      "productid": 7,
+      "productName": "Product 7",
+      "productCost": 9,
+      "productCount": 22,
+      "productexpiryDate": "19/06/2023",
+      "starttime": "08:55",
+      "productThreshold": 6
+    },
+    {
+      "productid": 8,
+      "productName": "Product 8",
+      "productCost": 11,
+      "productCount": 18,
+      "productexpiryDate": "07/04/2023",
+      "starttime": "15:10",
+      "productThreshold": 1
+    },
+    {
+      "productid": 9,
+      "productName": "Product 9",
+      "productCost": 4,
+      "productCount": 0,
+      "productexpiryDate": "12/02/2023",
+      "starttime": "09:00",
+      "productThreshold": 10
+    },
+    {
+      "productid": 10,
+      "productName": "Product 10",
+      "productCost": 15,
+      "productCount": 12,
+      "productexpiryDate": "25/01/2023",
+      "starttime": "16:45",
+      "productThreshold": 9
+    },
+    {
+      "productid": 10,
+      "productName": "Product 11",
+      "productCost": 15,
+      "productCount": 12,
+      "productexpiryDate": "25/01/2023",
+      "starttime": "16:45",
+      "productThreshold": 9
+    }
+  ]
+  
