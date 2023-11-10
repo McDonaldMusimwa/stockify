@@ -1,18 +1,21 @@
-//import React from 'react'
+//import React from 'react';
+import PropTypes from 'prop-types';
 import Logo from '../../assets/logo.jpg';
-import LoginForm from "./Form/LoginForm"
-import styles from './Login.module.css'
+import LoginForm from "./Form/LoginForm";
+import styles from './Login.module.css';
 
 const Login = (props) => {
-console.log(props.onLogIn)
   return (
     <div className={styles.Main}>
-        <img className={styles.Logo} src={Logo} alt='logo' />
-        <LoginForm onLogIn={props.onLogIn}/>
-       
-
+      <img className={styles.Logo} src={Logo} alt='logo' />
+      <LoginForm onLogIn={props.onLogIn} />
     </div>
-  )
-}
+  );
+};
 
-export default Login
+Login.propTypes = {
+  onLogIn: PropTypes.func.isRequired,
+  // Add more prop validations if needed
+};
+
+export default Login;

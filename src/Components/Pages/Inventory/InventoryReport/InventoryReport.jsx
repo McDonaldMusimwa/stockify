@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import styles from './InventoryReport.module.css';
+import styles from './InventoryReport.module.scss';
 import Card from '../../../UI/Card';
 //import stock from '../../../Data/Data.json';
 import InventoryItem from './InventoryItem';
@@ -9,7 +9,7 @@ import ViewProductModal from '../../../UI/ViewProductModal';
 const InventoryReport = () => {
   const [showModal, setShowModal] = useState(false);
   const [itemModal, setitemModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null); // To track the selected item
+  //const [selectedItem, setSelectedItem] = useState(null); // To track the selected item
   const [shipments, setShipments] = useState([]);
   const [stock, setStock] = useState([]);
 
@@ -35,6 +35,7 @@ const InventoryReport = () => {
       })
   }, [])
 
+ 
   const fetchSelectedItem = async (item) => {
     console.log(item)
     try {
@@ -45,7 +46,7 @@ const InventoryReport = () => {
       }
       const data = await response.json();
       const allShipments = data.map((item) => item.shipments).flat();
-      console.log(allShipments)
+      
       setShipments(allShipments);
 
 
@@ -60,11 +61,11 @@ const InventoryReport = () => {
     openModalHandler.viewProducthistoryModal();
 
   };
-  console.log(shipments)
+
 
   return (
     <>
-      <div className={styles.Hometop}> <button className={styles.addbutton} onClick={openModalHandler.addproductModal}>+Add Shipment </button><button>Download all</button> </div>
+      <div className={styles.Hometop}> <button className={styles.addbutton} onClick={openModalHandler.addproductModal}>+ Add Shipment </button><button className={styles.addbutton}>Download all</button> </div>
       <Card >
 
 

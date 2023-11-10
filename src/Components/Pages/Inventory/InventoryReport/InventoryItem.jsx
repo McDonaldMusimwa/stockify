@@ -1,5 +1,5 @@
 
-import styles from './InventoryItem.module.css';
+import styles from './InventoryItem.module.scss';
 import PropTypes from 'prop-types'; // Import PropTypes
 const InventoryItem = (props) => {
 
@@ -23,8 +23,9 @@ const InventoryItem = (props) => {
 
 // Define propTypes to validate the props
 InventoryItem.propTypes = {
+  onClick:PropTypes.func,
   item: PropTypes.shape({
-    onClick:PropTypes.func,
+   
     productID: PropTypes.string.isRequired,
     productname: PropTypes.string.isRequired,
     totalcost: PropTypes.number.isRequired,

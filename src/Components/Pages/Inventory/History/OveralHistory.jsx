@@ -8,6 +8,7 @@ import LowStocks from './LowStocks';
 
 const OveralHistory = () => {
   const [stock, setStock] = useState([]);
+  const [lowstock,setLowStock]= useState()
   const [totalCount, settotalCount] = useState(0);
   const [length, setLength] = useState(0);
   const [orders, setOrders] = useState([]);
@@ -40,16 +41,17 @@ const OveralHistory = () => {
         setLength(data.length)
         setStock(totalCost);
         settotalCount(totalCount)
+        setLowStock(data)
       });
   }, []);
-
+  
   return (
     <Card className={styles.Home}><h3>OveralHistory</h3>
       <div className={styles.Home2}>
         <Category length={length} />
         <TotalProducts TotalCost={stock} totalCount={totalCount} />
         <TopSelling order={orders} />
-        <LowStocks />
+        <LowStocks stock={lowstock}/>
       </div>
 
     </Card>

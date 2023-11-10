@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 import SearchBar from '../../Pages/DashBoard/SearchBar/SearchBar';
 
 const NavBar = (props) => {
-    console.log(props)
+    
     return (
         <>
         <SearchBar />

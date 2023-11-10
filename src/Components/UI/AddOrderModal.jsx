@@ -1,4 +1,4 @@
-import styles from './AddProductModal.module.scss';
+import styles from './AddOrder.module.scss'
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
@@ -66,7 +66,7 @@ console.log(productid)
         <div className={styles.backdrop} onClick={props.onClose}>
             <div className={styles.Modal}>
                 <header className={styles.header}>
-                    <h2>App Shipment</h2>
+                    <h2>App Order</h2>
                 </header>
 
 
@@ -89,7 +89,7 @@ console.log(productid)
                     <input name='quantityreceived' onChange={addQuantityReceivedHandler} onClick={(e) => e.stopPropagation()} />
                     <label>Cost</label>
                     <input name='cost' onChange={addCostHandler} onClick={(e) => e.stopPropagation()} />
-                    <button onClick={sendTask}>Add Shipment</button>
+                    <button onClick={sendTask}>Place Order</button>
                 </form>
             </div>
         </div>
