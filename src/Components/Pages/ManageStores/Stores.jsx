@@ -4,7 +4,7 @@ const Stores = () => {
   return (
     <div className={styles.Home}>
         
-        Stores</div>
+        </div>
   )
 }
 

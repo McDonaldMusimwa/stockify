@@ -2,24 +2,25 @@
 import PropTypes from 'prop-types'; // Import PropTypes
 import styles from './ProductItem.module.scss';
 
-const ProductItem = (props) => {
+const ShipmentProductItem = (props) => {
     return (
         <tr className={styles.Item}>
             <td>{props.item.productid}</td>
             <td>{props.item.productname}</td>
-            <td>{props.item.productdescription}</td>
+            
             <td>{props.item.quantityreceived}</td>
             <td>{props.item.cost}</td>
             <td>{props.item.totalcost}</td>
-            <td>{props.item.datereceived}</td>
+          
             <td>{props.item.expirydate}</td>
+           
     
         </tr>
       )
 }
 
 // Define propTypes to validate the props
-ProductItem.propTypes = {
+ShipmentProductItem.propTypes = {
     item: PropTypes.shape({
       productid: PropTypes.string.isRequired,
       productname: PropTypes.string.isRequired,
@@ -34,4 +35,4 @@ ProductItem.propTypes = {
     }).isRequired,
   };
 
-export default ProductItem
+export default ShipmentProductItem;

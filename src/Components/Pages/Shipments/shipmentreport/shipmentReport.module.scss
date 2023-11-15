@@ -1,0 +1,43 @@
+.Hometop {
+    display: flex;
+    flex-direction: row;
+    height: 5vh;
+    margin-left: 10%;
+    justify-content: space-between;
+    margin-bottom: 4%;
+  }
+  .Home {
+    height: 60vh;
+    margin-left: 10%;
+    margin-top: 2%;
+    border: 1px solid black;
+    overflow-y: auto;
+  }
+  
+
+  .Home thead th {
+    position: sticky;
+    top: 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    padding: 3px 15px;
+    border: 2px solid #ddd;
+  }
+  
+  th {
+    background-color: #b8b6b6;
+    text-align: left;
+  }
+  .addbutton {
+    padding: 5px;
+    background-color: #b8b6b6;
+    border-radius: 5px;
+    width: 40%;
+  }
+  

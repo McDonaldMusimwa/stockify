@@ -9,7 +9,7 @@ const PurchaseSummary = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('https://inventorymanagement-7i2p.onrender.com/order/') // Replace with your API endpoint
+        fetch('https://inventorymanagement-7i2p.onrender.com/shipment/') // Replace with your API endpoint
             .then((response) => response.json())
             .then((data) => {
                 setData(data);

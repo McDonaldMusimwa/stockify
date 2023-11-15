@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Login from './Components/Logins/Login';
-
+import { createBrowserHistory } from 'history';
 import Dashboard from './Components/Pages/DashBoard/Dashboard';
 import Inventory from './Components/Pages/Inventory/Inventory';
-import Stores from './Components/Pages/ManageStores/Stores';
+import Shipments from './Components/Pages/Shipments/shipments'
 import Orders from './Components/Pages/Orders/Orders';
 import Reports from './Components/Pages/Reports/Reports';
 import Suppliers from './Components/Pages/Suppliers/Suppliers';
+import AddShipment from './Components/Pages/Shipments/AddShipment/AddShipment';
 //import SignUpForm from './Components/Logins/SignUp';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './Components/UI/NavBar/NavBar';
-
+const history = createBrowserHistory();
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,7 +39,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router history={history}>
       <main>
         {!isLoggedIn ? (<Login onLogIn={loginHandler} />
 
@@ -51,7 +52,8 @@ function App() {
               <Route path='/reports' element={<Reports logOut={logoutHandler} />}></Route>
               <Route path='/suppliers' element={<Suppliers logOut={logoutHandler} />}></Route>
               <Route path='/orders' element={<Orders logOut={logoutHandler} />}></Route>
-              <Route path='/stores' element={<Stores logOut={logoutHandler} />}></Route>
+              <Route path='/shipments' element={<Shipments logOut={logoutHandler} />}></Route>
+              <Route path='/add-shipment' element={<AddShipment logOut={logoutHandler} />}></Route>
             </Routes>
           </>
         )}

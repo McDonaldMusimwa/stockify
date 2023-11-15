@@ -7,7 +7,7 @@ const AddProductModal = (props) => {
     const [productname, setProductName] = useState("");
     const [productDescription, setProductDescription] = useState("");
     const [quantityreceived, setQuantityReceived] = useState("");
-    const [cost, setCost] = useState("");
+
 
     const [productrange, setProductRange] = useState([]);
 
@@ -23,9 +23,6 @@ const AddProductModal = (props) => {
     }
 
 
-    const addCostHandler = (event) => {
-        setCost(event.target.value)
-    }
 
     const addDescriptionHandler = (event) => {
         setProductDescription(event.target.value)
@@ -38,13 +35,13 @@ const AddProductModal = (props) => {
             productname: productname,
             productdescription: productDescription,
             quantityreceived: quantityreceived,
-            cost: cost,
+           
 
         }
         console.log(shipmentData)
     }
 
-console.log(productid)
+
 
     useEffect(() => {
         fetch('https://inventorymanagement-7i2p.onrender.com/stock/getproductcatalogue')
@@ -66,29 +63,23 @@ console.log(productid)
         <div className={styles.backdrop} onClick={props.onClose}>
             <div className={styles.Modal}>
                 <header className={styles.header}>
-                    <h2>App Shipment</h2>
+                    <h2>App Product</h2>
                 </header>
 
 
                 <form>
                     <label>Product Id</label>
-                    <select value={productid} onChange={addProductIdHandler} onClick={(e) => e.stopPropagation()}>
-                        {productrange.map((product) => (
-                            <option key={product} value={product}>
-                                {product}
-                            </option>
-                        ))}
+                   <input name='productid' onChange={addProductIdHandler} onClick={(e) => e.stopPropagation()} />
 
-                    </select>
+                   
 
                     <label >Product Name</label>
                     <input name='productname' onChange={addProductNameHandler} onClick={(e) => e.stopPropagation()} />
                     <label>Product Description</label>
                     <input name='productdescription' onChange={addDescriptionHandler} onClick={(e) => e.stopPropagation()} />
-                    <label>Quantity received</label>
-                    <input name='quantityreceived' onChange={addQuantityReceivedHandler} onClick={(e) => e.stopPropagation()} />
-                    <label>Cost</label>
-                    <input name='cost' onChange={addCostHandler} onClick={(e) => e.stopPropagation()} />
+                    <label>Quantity per case</label>
+                    <input name='quantitypercase' onChange={addQuantityReceivedHandler} onClick={(e) => e.stopPropagation()} />
+                
                     <button onClick={sendTask}>Add Shipment</button>
                 </form>
             </div>

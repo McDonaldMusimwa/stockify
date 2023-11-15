@@ -75,7 +75,7 @@ const OrderReport = () => {
           <table>
             <thead>
               <tr>
-                <th>ProductId</th>
+                <th>Order Id</th>
                 <th>CustomerName</th>
                 <th>Date ordered</th>
                 <th>Number of Products Ordered</th>

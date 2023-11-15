@@ -20,7 +20,7 @@ const NavBar = (props) => {
                 <NavLink to="reports"><FontAwesomeIcon icon={faFile} className={styles.icon}/>Reports</NavLink>
                 <NavLink to="suppliers"><FontAwesomeIcon icon={faUser} className={styles.icon}/>Suppliers</NavLink>
                 <NavLink to="orders"><FontAwesomeIcon icon={faBox} className={styles.icon}/>Orders</NavLink>
-                <NavLink to="stores"><FontAwesomeIcon icon={faStore} className={styles.icon}/>Shipments</NavLink>
+                <NavLink to="shipments"><FontAwesomeIcon icon={faStore} className={styles.icon}/>Shipments</NavLink>
             </nav>
             <div className={styles.NavBottom}>
                 <NavLink to="settings"><FontAwesomeIcon icon={faGear} className={styles.icon}/>Settings</NavLink>

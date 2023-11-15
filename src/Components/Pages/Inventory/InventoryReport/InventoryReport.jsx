@@ -37,9 +37,9 @@ const InventoryReport = () => {
 
  
   const fetchSelectedItem = async (item) => {
-    console.log(item)
+    
     try {
-      const response = await fetch(`https://inventorymanagement-7i2p.onrender.com/stock/productshipments/${item}`)
+      const response = await fetch(`https://inventorymanagement-7i2p.onrender.com/stock/${item}`)
 
       if (!response.ok) {
         throw new Error('Failed to fetch data from the database');
@@ -65,7 +65,7 @@ const InventoryReport = () => {
 
   return (
     <>
-      <div className={styles.Hometop}> <button className={styles.addbutton} onClick={openModalHandler.addproductModal}>+ Add Shipment </button><button className={styles.addbutton}>Download all</button> </div>
+      <div className={styles.Hometop}> <button className={styles.addbutton} onClick={openModalHandler.addproductModal}>+ Add Product </button><button className={styles.addbutton}>Download all</button> </div>
       <Card >
 
 
