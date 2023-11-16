@@ -9,6 +9,7 @@ import Orders from './Components/Pages/Orders/Orders';
 import Reports from './Components/Pages/Reports/Reports';
 import Suppliers from './Components/Pages/Suppliers/Suppliers';
 import AddShipment from './Components/Pages/Shipments/AddShipment/AddShipment';
+import AddOrder from './Components/Pages/Orders/AddOrder/AddOrder';
 //import SignUpForm from './Components/Logins/SignUp';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './Components/UI/NavBar/NavBar';
@@ -54,6 +55,7 @@ function App() {
               <Route path='/orders' element={<Orders logOut={logoutHandler} />}></Route>
               <Route path='/shipments' element={<Shipments logOut={logoutHandler} />}></Route>
               <Route path='/add-shipment' element={<AddShipment logOut={logoutHandler} />}></Route>
+              <Route path='/add-order' element={<AddOrder logOut={logoutHandler} />}></Route>
             </Routes>
           </>
         )}

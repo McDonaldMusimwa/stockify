@@ -1,5 +1,5 @@
 import OrderReport from './OrderReport/OrderReport';
-import styles from './Orders.module.css';
+import styles from './Orders.module.scss';
 
 const Orders = () => {
   return (

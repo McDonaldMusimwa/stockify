@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from './OrderReport.module.scss';
 import Card from '../../../UI/Card';
+import { useNavigate } from 'react-router-dom';
 //import stock from '../../../Data/Data.json';
 
 import AddOrderModal from '../../../UI/AddOrderModal';
@@ -8,6 +9,7 @@ import ViewOrderModal from '../../../UI/ViewOrderModal';
 import OrderItem from './Orderitem';
 
 const OrderReport = () => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [itemModal, setitemModal] = useState(false);
   //const [selectedItem, setSelectedItem] = useState(null); // To track the selected item
@@ -63,10 +65,13 @@ const OrderReport = () => {
     openModalHandler.viewProducthistoryModal();
   };
 
-
+  const handleButtonClick = () => {
+    // Navigate to the "/another-component" route
+    navigate('/add-order');
+  };
   return (
     <>
-      <div className={styles.Hometop}> <button className={styles.addbutton} onClick={openModalHandler.addproductModal}>+ Add Order </button><button className={styles.addbutton}>Download all</button> </div>
+      <div className={styles.Hometop}> <button className={styles.addbutton} onClick={handleButtonClick}>+ Add Order </button><button className={styles.addbutton}>Download all</button> </div>
       <Card >
 
 

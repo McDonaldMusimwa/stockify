@@ -119,25 +119,15 @@
 @media (min-width: 768px) {
 
   .backdrop {
-   
+
     width: 77vw;
     margin-left: 28.5%;
     height: 100%;
     /* 100% of the viewport height */
-  }
 
-  .Modal {
-    position: relative;
-    width: 95%;
-    
-    /* Adjust the max-width as needed */
-    z-index: 100;
-    
 
-    border-radius: 2px;
-    
-    
-    
+
+
 
     .ShipmentDetailsflex {
       display: flex;
@@ -165,86 +155,91 @@
     }
   }
 
-  .header {
-    background: rgb(20, 20, 20);
-    padding: 0.5rem;
-  }
 
-  .header h2 {
-    margin: 0;
-    color: white;
-  }
 
-  .Deletebtn{
-    height: 30px;
+
+.header {
+  background: rgb(20, 20, 20);
+  padding: 0.5rem;
+}
+
+.header h2 {
+  margin: 0;
+  color: white;
+}
+
+.Deletebtn {
+  height: 30px;
+  padding: 5px;
+  background-color: rgb(211, 114, 114);
+}
+
+.BtnContainer {
+  display: flex;
+  flex-direction: row;
+
+  .btn {
+    display: inline;
+
+    margin: .5rem .5rem;
+    background: rgb(255, 204, 0);
+    width: 50%;
     padding: 5px;
-    background-color: rgb(211, 114, 114);
-  }
-  .BtnContainer {
-    display: flex;
-    flex-direction: row;
-    .btn {
-      display: inline;
-
-      margin: .5rem .5rem;
-      background: rgb(255, 204, 0);
-      width: 50%;
-      padding: 5px;
-      height: 45px;
-      border-radius: 2px;
-    }
-
-    .btn:active {
-      cursor: pointer;
-    }
+    height: 45px;
+    border-radius: 2px;
   }
 
-  .actions {
+  .btn:active {
+    cursor: pointer;
+  }
+}
+
+.actions {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  background: #d2d2d2;
+  height: 50px;
+}
+
+.title {
+  width: 98%;
+  height: 35px;
+  border-radius: 2px;
+  margin: 2px 0 2px 0;
+}
+
+
+.ShipmentDetails {
+  width: 100%; // Adjust the width as needed
+
+
+  label {
+    margin-bottom: 0.5rem;
+    display: inline;
+  }
+
+  input {
+    width: 40%; // Full width for the left input
     padding: 0.5rem;
-    display: flex;
-    justify-content: flex-end;
-    background: #d2d2d2;
-    height: 50px;
+    margin-bottom: 1rem;
   }
 
-  .title {
-    width: 98%;
-    height: 35px;
-    border-radius: 2px;
-    margin: 2px 0 2px 0;
+  input[type="date"] {
+    width: 40%; // Full width for date input
   }
+}
 
+select,
+option {
+  background-color: #d2d2d2;
+  width: 100%;
 
-  .ShipmentDetails {
-    width: 100%; // Adjust the width as needed
-
-
-    label {
-      margin-bottom: 0.5rem;
-      display: inline;
-    }
-
-    input {
-      width: 40%; // Full width for the left input
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    input[type="date"] {
-      width: 40%; // Full width for date input
-    }
-  }
-
-  select,
-  option {
-    background-color: #d2d2d2;
-    width: 100%;
-
-    border-radius: 2px;
-    height: 40px;
-    /* Set to a fixed value or a percentage that suits your design */
-    margin: 10px 0 5px 0;
-  }
+  border-radius: 2px;
+  height: 40px;
+  /* Set to a fixed value or a percentage that suits your design */
+  margin: 10px 0 5px 0;
+}
 
 
 
