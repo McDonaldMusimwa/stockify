@@ -1,10 +1,17 @@
 
 import { useState, useEffect } from 'react';
 import styles from './AddShipment.module.scss';
-
+import { useNavigate } from 'react-router-dom';
+import OrderStatusModal from '../../../UI/OrderStatusModal';
+import axios from 'axios';
+import { Gettoken } from '../../../Util/Auth';
 const AddShipment = () => {
     const [products, setProducts] = useState([]);
     const [productrange, setProductRange] = useState([])
+    const [openStatusModal, setopenStatusModal] = useState(false)
+    const [error, setError] = useState(null)
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
     const [mainForm, setMainForm] = useState({
         invoicenumber: '',
         datereceived: '',
@@ -12,7 +19,7 @@ const AddShipment = () => {
         totalreceived: '',
         totalcost: '',
         shipmentdescription: '',
-        shipments:[]
+
     });
 
     const handleMainFormChange = (event) => {
@@ -32,15 +39,7 @@ const AddShipment = () => {
         });
     };
 
-    const handleShipmentSubmit =()=>{
-        const formData = {
-            ...mainForm,
-            products:
-                products
-            
-        }
-        console.log(formData)
-    }
+
 
     useEffect(() => {
         fetch('https://inventorymanagement-7i2p.onrender.com/stock/getproductcatalogue')
@@ -56,78 +55,130 @@ const AddShipment = () => {
             });
     }, []);
 
+
+    const addShipmentSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            setLoading(true);
+            const formData = {
+                ...mainForm,
+                products: products,
+            };
+
+            console.log(formData);
+            const token = Gettoken()
+            const response = await axios.post('https://inventorymanagement-7i2p.onrender.com/shipment/addshipment/', formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (!response.data || response.status !== 200) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            setopenStatusModal(true);
+
+            setTimeout(() => {
+                navigate('/shipments');
+            }, 5000);
+
+            setMainForm({
+                customername: '',
+                dateordered: '',
+                contactphone: '',
+                contactemail: '',
+                products: [],
+            });
+        } catch (error) {
+            console.error('Error adding shipment:', error);
+            setError('Failed to add the shipment. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
+
+    const onClose = () => {
+        setopenStatusModal(false);
+    };
+
+
     return (
         <div className={styles.backdrop}>
-             <h1>Add Shipment !</h1>
-             <div className={styles.ShipmentDetails}>
-                        <div className={styles.ShipmentDetailsflex}>
-                            <div>
-                                <label>Invoice Number</label>
-                                <input
-                                    type="text"
-                                    name="invoicenumber"
-                                    placeholder="Invoicenumber"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                            <div>
-                                <label>Date received</label>
-                                <input
-                                    type="date"
-                                    name="datereceived"
-                                    placeholder="Date received"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.ShipmentDetailsflex}>
-                            <div>
-                                <label>Supplier Name</label>
-                                <input
-                                    type="text"
-                                    name="suppliername"
-                                    placeholder="Supplier Name"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                            <div>
-                                <label>Total Cases</label>
-                                <input
-                                    type="number"
-                                    name="totalreceived"
-                                    placeholder="Total cases received"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.ShipmentDetailsflex}>
-                            <div>
-                                <label>Total Invoice</label>
-                                <input
-                                    name="totalcost"
-                                    type="number"
-                                    placeholder="Total invoice cost"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                            <div>
-                                <label>Shipment Comments</label>
-                                <input
-                                    type="textarea"
-                                    name="shipmentdescription"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                        </div>
+            <h1>Add Shipment !</h1>
+            <div className={styles.ShipmentDetails}>
+                <div className={styles.ShipmentDetailsflex}>
+                    <div>
+                        <label>Invoice Number</label>
+                        <input
+                            type="text"
+                            name="invoicenumber"
+                            placeholder="Invoicenumber"
+                            className={styles.ShipmentDetailsTop}
+                            onChange={handleMainFormChange}
+                        />
                     </div>
-               
-           
+                    <div>
+                        <label>Date received</label>
+                        <input
+                            type="date"
+                            name="datereceived"
+                            placeholder="Date received"
+                            className={styles.ShipmentDetailsTop}
+                            onChange={handleMainFormChange}
+                        />
+                    </div>
+                </div>
+                <div className={styles.ShipmentDetailsflex}>
+                    <div>
+                        <label>Supplier Name</label>
+                        <input
+                            type="text"
+                            name="suppliername"
+                            placeholder="Supplier Name"
+                            className={styles.ShipmentDetailsTop}
+                            onChange={handleMainFormChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Total Cases</label>
+                        <input
+                            type="number"
+                            name="totalreceived"
+                            placeholder="Total cases received"
+                            className={styles.ShipmentDetailsTop}
+                            onChange={handleMainFormChange}
+                        />
+                    </div>
+                </div>
+                <div className={styles.ShipmentDetailsflex}>
+                    <div>
+                        <label>Total Invoice</label>
+                        <input
+                            name="totalcost"
+                            type="number"
+                            placeholder="Total invoice cost"
+                            className={styles.ShipmentDetailsTop}
+                            onChange={handleMainFormChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Shipment Comments</label>
+                        <input
+                            type="textarea"
+                            name="shipmentdescription"
+                            className={styles.ShipmentDetailsTop}
+                            onChange={handleMainFormChange}
+                        />
+                    </div>
+                </div>
+            </div>
+
+
             <div className={styles.BtnContainer}>
                 <button
                     className={styles.btn}
@@ -231,231 +282,13 @@ const AddShipment = () => {
                 ))}
             </table>
 
-            <button style={{'backgroundColor':"green"}} onClick={handleShipmentSubmit}>Add Shipment</button>
+            <button style={{ 'backgroundColor': "green" }} onClick={addShipmentSubmit}>Add Shipment</button>
+            {openStatusModal && <OrderStatusModal onclose={onClose} action={`Shipment Added`} name={`Shipment`} />}
+            {error && <div className={styles.error}>{error}</div>}
+            {loading && <div className={styles.loading}>Placing order...</div>}
         </div>
     );
 };
 
 export default AddShipment;
 
-/*
-import styles from './AddShipment.module.scss';
-import { useState, useEffect } from 'react';
-import Services from '../../../Data/Services.jsx';
-
-
-
-const AddProductModal = () => {
-    
-    const [tableRows, setTableRows] = useState([]);
-    
-    const [productrange, setProductRange] = useState([])
-    const [mainForm, setMainForm] = useState({
-        invoicenumber: '',
-        datereceived: '',
-        suppliername: '',
-        totalreceived: '',
-        totalcost: '',
-        shipmentdescription: '',
-        products:[]
-    });
-
-    const [products, setProducts] = useState([]);
-
-    const addProduct = () => {
-        // Assuming you have some form of validation before adding a product
-       // debugger;
-        const newProduct = {
-            productid: '',
-            productname: '',
-            quantityreceived: '',
-            cost: '',
-            totalcost: '',
-            expirydate: '',
-        };
-
-        setProducts((prevProducts) => [...prevProducts, newProduct]);
-        
-    };
-
-    const handleMainFormChange = (event) => {
-        const { name, value } = event.target;
-        setMainForm((prevForm) => ({
-            ...prevForm,
-            [name]: value,
-        }));
-    };
-
-
-    const handleProductChange = (event, index) => {
-        const { name, value } = event.target;
-        console.log('Name:', name, "value" ,value);
-        
-        setProducts((prevProducts) =>
-            
-          prevProducts.map((product, i) => {  
-            console.log(i,index, product)
-          })
-        );
-      };
-
-
- 
-
-    useEffect(() => {
-        fetch('https://inventorymanagement-7i2p.onrender.com/stock/getproductcatalogue')
-            .then((response) => response.json())
-            .then((data) => {
-                const products = data.map((product) => product.productId);
-
-                setProductRange(products);
-                //setProductId(products.length > 0 ? products[0] : '');
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }, []);
-
-    const addNewRow = () => {
-        // Create a new row object with default values or initial values
-        addProduct()
-        Services.addNewRow(productrange, setTableRows, styles.Deletebtn, handleProductChange)
-
-    };
-
-    const removelastrow = () => {
-        Services.removeLastRow(setTableRows)
-
-    }
-    const handleSubmit = () => {
-        const formData = {
-            ...mainForm,
-            products: [...products],
-        };
-        console.log(formData);
-        // Add your submission logic here
-    };
-   
-    return (
-        <div className={styles.backdrop}>
-            <div className={styles.Modal}>
-                <h3>Add shipment</h3>
-                <form>
-                    <div className={styles.ShipmentDetails}>
-                        <div className={styles.ShipmentDetailsflex}>
-                            <div>
-                                <label>Invoice Number</label>
-                                <input
-                                    type="text"
-                                    name="invoicenumber"
-                                    placeholder="Invoicenumber"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                            <div>
-                                <label>Date received</label>
-                                <input
-                                    type="date"
-                                    name="datereceived"
-                                    placeholder="Date received"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.ShipmentDetailsflex}>
-                            <div>
-                                <label>Supplier Name</label>
-                                <input
-                                    type="text"
-                                    name="suppliername"
-                                    placeholder="Supplier Name"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                            <div>
-                                <label>Total Cases</label>
-                                <input
-                                    type="number"
-                                    name="totalreceived"
-                                    placeholder="Total cases received"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.ShipmentDetailsflex}>
-                            <div>
-                                <label>Total Invoice</label>
-                                <input
-                                    name="totalcost"
-                                    type="number"
-                                    placeholder="Total invoice cost"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                            <div>
-                                <label>Shipment Comments</label>
-                                <input
-                                    type="textarea"
-                                    name="shipmentdescription"
-                                    className={styles.ShipmentDetailsTop}
-                                    onChange={handleMainFormChange}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.BtnContainer}>
-                        <span
-                            onClick={addNewRow}
-                            className={styles.btn}
-                        >
-                            Add New Row
-                        </span>
-                        <span className={styles.btn}
-                            onClick={removelastrow}>
-                            Delete Row
-                        </span>
-                    </div>
-                    <br />
-                    <table id="shipmenttable" className="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Product ID</th>
-                                <th>Product Name</th>
-                                <th>Quantity Received</th>
-                                <th>Cost </th>
-                                <th>Total Cost</th>
-                                <th>Expiry Date</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tableRows.map((row, index) => (
-                                <tr key={index}>
-                                    <td>{row.productid}</td>
-                                    <td>{row.productname}</td>
-                                    <td>{row.quantityreceived}</td>
-                                    <td>{row.cost}</td>
-                                    <td>{row.totalcost}</td>
-                                    <td>{row.expirydate}</td>
-                                    <td>{row.action}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <span style={{ backgroundColor: 'green', width: '100%', padding: '10px' }} className={styles.btn} onClick={handleSubmit}>Add Shipment</span>
-                </form>
-            </div>
-        </div>
-        
-    );
-    
-};
-
-export default AddProductModal;
-
-*/

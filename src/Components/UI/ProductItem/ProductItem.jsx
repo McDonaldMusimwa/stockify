@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'; // Import PropTypes
 import styles from './ProductItem.module.scss';
 
 const ProductItem = (props) => {
+  console.log(props)
     return (
         <tr className={styles.Item}>
-            <td>{props.item.productid}</td>
+           
             <td>{props.item.productname}</td>
             <td>{props.item.productdescription}</td>
             <td>{props.item.quantityreceived}</td>

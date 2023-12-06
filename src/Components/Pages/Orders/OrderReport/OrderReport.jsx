@@ -2,27 +2,30 @@ import { useState, useEffect } from 'react';
 import styles from './OrderReport.module.scss';
 import Card from '../../../UI/Card';
 import { useNavigate } from 'react-router-dom';
+import exportToExcel from '../../../Services/ExportToExcel';
 //import stock from '../../../Data/Data.json';
-
-import AddOrderModal from '../../../UI/AddOrderModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileExport } from '@fortawesome/free-solid-svg-icons';
+//import AddOrderModal from '../../../UI/AddOrderModal';
 import ViewOrderModal from '../../../UI/ViewOrderModal';
 import OrderItem from './Orderitem';
 
 const OrderReport = () => {
+  const [filteredmonth, setfilteredmonth] = useState('');
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
+
   const [itemModal, setitemModal] = useState(false);
   //const [selectedItem, setSelectedItem] = useState(null); // To track the selected item
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
 
   const openModalHandler = {
-    addproductModal: () => setShowModal(true),
+
     viewProducthistoryModal: () => setitemModal(true),
   };
 
   const closeModalHandler = {
-    closeproduct: () => setShowModal(false),
+
     closeProductHistory: () => setitemModal(false),
   };
   useEffect((
@@ -69,9 +72,68 @@ const OrderReport = () => {
     // Navigate to the "/another-component" route
     navigate('/add-order');
   };
+
+  const months = [
+    { month: "January", value: 1 },
+    { month: "February", value: 2 },
+    { month: "March", value: 3 },
+    { month: "April", value: 4 },
+    { month: "May", value: 5 },
+    { month: "June", value: 6 },
+    { month: "July", value: 7 },
+    { month: "August", value: 8 },
+    { month: "September", value: 9 },
+    { month: "October", value: 10 },
+    { month: "November", value: 11 },
+    { month: "December", value: 12 },
+  ];
+
+  const changeMonthHandler = (event) => {
+    const selectedMonth = parseInt(event.target.value);
+    setfilteredmonth(selectedMonth === '' ? null : selectedMonth);
+  };
+  const filteredOrders = orders.filter((shipment) => {
+
+
+    if (!filteredmonth) {
+      return true; // No month selected, include all shipments
+    }
+
+    const dateOrdered = new Date(shipment.dateordered);
+
+    if (isNaN(dateOrdered.getTime())) {
+      return false; // Invalid date, exclude the shipment
+    }
+
+    const shipmentMonth = dateOrdered.getMonth() + 1;
+
+    return shipmentMonth === parseInt(filteredmonth, 10);
+  });
+
+  const onExportButton = () => {
+    exportToExcel(filteredOrders)
+  }
   return (
     <>
-      <div className={styles.Hometop}> <button className={styles.addbutton} onClick={handleButtonClick}>+ Add Order </button><button className={styles.addbutton}>Download all</button> </div>
+      <div className={styles.Hometop}> <button className={styles.addbutton} onClick={handleButtonClick}>+ Add Order </button>
+
+        <div className={styles.filter}>
+          <label>Filter by month</label>
+
+          <select className={styles.Select} style={{ width: "150px" }} onChange={changeMonthHandler} value={filteredmonth || ''}>
+            <option value="" disabled hidden>
+              Choose month
+            </option>
+            {months.map((month) => (
+              <option key={month.value} value={month.value}>
+                {month.month}
+              </option>
+            ))}
+          </select>
+
+        </div>
+
+        <button className={styles.addbutton} onClick={onExportButton}><FontAwesomeIcon icon={faFileExport} /> Export to Excel</button> </div>
       <Card >
 
 
@@ -92,7 +154,7 @@ const OrderReport = () => {
 
 
             <tbody>
-              {orders.map((item) => (
+              {filteredOrders.map((item) => (
 
                 <OrderItem
                   key={item._id}
@@ -108,7 +170,7 @@ const OrderReport = () => {
             {itemModal && <ViewOrderModal products={products} onClose={closeModalHandler.closeProductHistory} />}
           </table>
         </div>
-        {showModal && <AddOrderModal onClose={closeModalHandler.closeproduct} />}
+
       </Card>
     </>
   );

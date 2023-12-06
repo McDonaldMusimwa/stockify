@@ -2,7 +2,7 @@
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './SearchBar.module.css';
-import dummyImage from '../../../../assets/logo.ico';
+import dummyImage from '../../../../assets/logo.png';
 
 const SearchBar = () => {
     return (

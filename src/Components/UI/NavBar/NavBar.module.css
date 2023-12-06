@@ -1,28 +1,49 @@
 /* NavBar.module.css */
+:root {
+  --hover-color: #3498db;
+  --main-color:rgba(174, 184, 192, 0.4);
+}
+
 .NavMain {
   position: fixed;
   left: 0;
   top: 0;
   width: 20%; /* Adjust the width to your preference */
   height: 100vh; /* Set the height to full viewport height */
-  background-color: #f0f0f0; /* Set your desired background color */
+  background-color: var(--main-color); /* Set your desired background color */
   text-align: left;
 }
+
 .NavMain img {
-  width: 50px;
-  margin: 5px;
+  width: 70px;
+  margin: 15px;
   top: 5px;
+}
+
+.NameLogo {
+  padding: 20px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  width: 100px;
 }
 
 .NavTop {
   padding: 20px;
 }
 
-.NavTop a {
+.NavTop a,
+.NavTop a:visited, /* style for visited links */
+.NavTop a:active { /* style for active links */
   display: block;
   margin-bottom: 20px;
   text-decoration: none;
   color: #333;
+}
+
+.NavTop a:hover,
+.NavTop a:focus { /* style for hover and focus */
+  color: var(--hover-color); /* set your desired hover color */
 }
 
 .NavBottom {
@@ -32,13 +53,21 @@
   padding: 20px;
 }
 
-.NavBottom a {
+.NavBottom a,
+.NavBottom a:visited, /* style for visited links */
+.NavBottom a:active { /* style for active links */
   display: block;
   margin-bottom: 10px;
   text-decoration: none;
   color: #333;
   margin: 2px;
 }
- .icon{
-    margin-right: 10px;
- }
+
+.NavBottom a:hover,
+.NavBottom a:focus { /* style for hover and focus */
+  color: rgb(53, 53, 190); /* set your desired hover color */
+}
+
+.icon {
+  margin-right: 10px;
+}

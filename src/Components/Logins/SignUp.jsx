@@ -1,11 +1,11 @@
-import Logo from '../../assets/logo.jpg';
-import SignUpForm from "./Form/SignForm";
-import styles from './Login.module.css';
+
+import SignUpForm from "./Form/SignUpForm";
+import styles from './SignUp.module.scss';
 
 const SignUp = () => {
   return (
     <div className={styles.Main}>
-        <img className={styles.Logo} src={Logo} alt='logo' />
+       
         <SignUpForm />
        
 

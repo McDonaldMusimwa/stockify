@@ -6,7 +6,7 @@ const Category = (props) => {
     
   return (
     <div className={styles.Category}>
-      Category
+      Products Range
       <p className={styles.span2}>{props.length}</p>
     </div>
   );

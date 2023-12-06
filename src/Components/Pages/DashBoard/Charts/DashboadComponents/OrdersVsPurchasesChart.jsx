@@ -36,7 +36,7 @@ const options = {
     },
 };
 
-const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'];
+const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'];
 
 
 
@@ -101,7 +101,7 @@ const OrdersVsPurchasesChart = () => {
 
     //Shipments
     useEffect(() => {
-        fetch('https://inventorymanagement-7i2p.onrender.com/stock/allshipments/') // Replace with your API endpoint
+        fetch('https://inventorymanagement-7i2p.onrender.com/shipment/') // Replace with your API endpoint
             .then((response) => response.json())
             .then((data) => {
                 
@@ -125,7 +125,8 @@ const OrdersVsPurchasesChart = () => {
                 data.forEach((shipment) => {
                     const date = new Date(shipment.datereceived);
                     const month = date.toLocaleString('default', { month: 'long' });
-                    monthlyTotals[month] += shipment.quantityreceived;
+                    monthlyTotals[month] += shipment.totalreceived;
+                    
                 });
                 
                 // Create an array of monthly totals in the desired format
@@ -150,6 +151,7 @@ const OrdersVsPurchasesChart = () => {
             });
     }, []);
 
+
     const data = {
         labels,
         datasets: [
@@ -166,9 +168,6 @@ const OrdersVsPurchasesChart = () => {
         ],
     };
     
-
-    console.log("order =>"+ orderdata)
-    console.log("purchases =>" + purchasesdata)
 
 
     return (
