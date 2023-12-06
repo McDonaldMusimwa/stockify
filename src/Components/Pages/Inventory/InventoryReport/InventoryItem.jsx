@@ -13,9 +13,8 @@ const InventoryItem = (props) => {
         <td>{props.item.productname}</td>
         <td>{props.item.totalquantity}</td>
         <td>{props.item.totalcost}</td>
-        <td>{props.item.productThreshold}</td>
-        
-        <td>{props.item.totalquantity > 0 ? 'InStock' : 'Out of Stock'}</td>
+        <td>10 cases</td>
+        <td>{props.item.totalquantity > 0 ? '✔️' : '✖'}</td>
 
     </tr>
   )

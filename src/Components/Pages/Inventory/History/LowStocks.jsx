@@ -1,5 +1,6 @@
 //import  from 'react'
 import styles from './TotalProducts.module.css'
+import PropTypes from 'prop-types';
 
 const LowStocks = (props) => {
     //console.log(props.stock)
@@ -41,4 +42,19 @@ const LowStocks = (props) => {
     )
 }
 
+LowStocks.propTypes = {
+    stock: PropTypes.arrayOf(
+      PropTypes.shape({
+        totalquantity: PropTypes.number.isRequired,
+        shipments: PropTypes.arrayOf(
+          PropTypes.shape({
+            quantityreceived: PropTypes.number.isRequired,
+            // Add other shipment properties as needed
+          })
+        ).isRequired,
+        totalcost: PropTypes.number.isRequired,
+        // Add other product properties as needed
+      })
+    ).isRequired,
+  };
 export default LowStocks

@@ -1,5 +1,6 @@
 //import  from 'react'
-import styles from './TotalProducts.module.css'
+import styles from './TotalProducts.module.css';
+import PropTypes from 'prop-types';
 
 const TopSelling = (props) => {
     
@@ -56,4 +57,19 @@ const totalQuantities = totalQuantitiesArray.map((item) => item.totalQuantity);
     )
 }
 
+TopSelling.propTypes = {
+  order: PropTypes.arrayOf(
+    PropTypes.shape({
+      dateordered: PropTypes.string.isRequired,
+      products: PropTypes.arrayOf(
+        PropTypes.shape({
+          productId: PropTypes.string.isRequired,
+          quantity: PropTypes.number.isRequired,
+          // Add other product properties as needed
+        })
+      ).isRequired,
+      // Add other order properties as needed
+    })
+  ).isRequired,
+};
 export default TopSelling

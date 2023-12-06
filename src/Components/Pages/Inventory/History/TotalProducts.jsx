@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './TotalProducts.module.css';
 
 const TotalProducts = (props) => {
+  
   return (
     <div className={styles.TotalProducts}>
       TotalProducts

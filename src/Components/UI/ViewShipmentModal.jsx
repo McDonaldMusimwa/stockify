@@ -1,18 +1,16 @@
-//import React from 'react';
+
+import PropTypes from 'prop-types';
 import ProductItem from './ProductItem/shipmentProductItem';
 import styles from './ViewProductModal.module.scss';
-import PropTypes from 'prop-types';
 
 const ViewShipmentModal = (props) => {
-    // Ensure orders is an array and not undefined
-    
-    const orderItems = props.shipments;
-  
-    
+    const { shipments, onClose } = props;
+
     return (
-        <div className={styles.backdrop} onClick={props.onClose}>
+        <div className={styles.backdrop} onClick={onClose}>
             <div className={styles.Modal}>
                 <div className={styles.Home}>
+                
                     <table>
                         <thead>
                             <tr>
@@ -25,17 +23,18 @@ const ViewShipmentModal = (props) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {orderItems.map((item) => (
-                                
+                            {shipments.map((item) => (
                                 <ProductItem key={item._id} item={item} />
                             ))}
+                            
                         </tbody>
+                        
                     </table>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 ViewShipmentModal.propTypes = {
     onClose: PropTypes.func.isRequired,
@@ -43,11 +42,11 @@ ViewShipmentModal.propTypes = {
         PropTypes.shape({
             _id: PropTypes.string.isRequired,
             productname: PropTypes.string.isRequired,
-            productdescription: PropTypes.string.isRequired,
+            
             quantityreceived: PropTypes.number.isRequired,
             cost: PropTypes.number.isRequired,
             totalcost: PropTypes.number.isRequired,
-            datereceived: PropTypes.string.isRequired,
+           
             expiryDate: PropTypes.string.isRequired,
         })
     ),

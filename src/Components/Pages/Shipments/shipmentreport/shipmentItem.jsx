@@ -1,6 +1,7 @@
 
 import styles from './shipmentItem.module.scss';
 import PropTypes from 'prop-types'; // Import PropTypes
+
 const ShipmentItem = (props) => {
 
     //const numberofproducts = props.item.products.length;
@@ -17,6 +18,8 @@ const ShipmentItem = (props) => {
 
 
     return (
+        <>
+        
         <tr className={styles.Item} onClick={props.onClick}>
 
             <td>{item.shipmentid}</td>
@@ -31,6 +34,7 @@ const ShipmentItem = (props) => {
 
 
         </tr>
+        </>
     )
 }
 

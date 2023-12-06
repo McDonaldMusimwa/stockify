@@ -31,7 +31,10 @@ body {
   min-height: 100vh;
 }
 
-
+main{
+  text-align: center;
+  margin: 2rem auto;
+}
 button {
   border-radius: 8px;
   border: 1px solid transparent;

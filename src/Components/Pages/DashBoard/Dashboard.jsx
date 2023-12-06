@@ -1,6 +1,6 @@
 //import React from 'react';
 
-import styles from './Dashboard.module.css';
+import styles from './Dashboard.module.scss';
 
 
 import SalesOverViews from './Charts/DashboadComponents/SalesOverViews';

@@ -1,10 +1,37 @@
-//import React from 'react'
-import Card from '../../../UI/Card';
-import styles from './BesSellingProduct.module.css';
-const BesSellingProduct = () => {
+
+import styles from './BesSellingProduct.module.scss'
+import PropTypes from 'prop-types'; // Import PropTypes
+const InventoryItem = (props) => {
+
+
+
+    
   return (
-    <Card className={styles.BestProduct}>BesSellingProduct</Card>
+    <tr className={styles.Item} onClick={props.onClick}>
+        
+        <td>{props.item.productID}</td>
+        <td>{props.item.productname}</td>
+        <td>{props.item.totalquantity}</td>
+        <td>{props.item.totalcost}</td>
+       
+        
+
+    </tr>
   )
 }
 
-export default BesSellingProduct
+// Define propTypes to validate the props
+InventoryItem.propTypes = {
+  onClick:PropTypes.func,
+  item: PropTypes.shape({
+   
+    productID: PropTypes.string.isRequired,
+    productname: PropTypes.string.isRequired,
+    totalcost: PropTypes.number.isRequired,
+    totalquantity: PropTypes.number.isRequired,
+    productThreshold: PropTypes.number.isRequired,
+    productexpiryDate: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default InventoryItem

@@ -1,0 +1,17 @@
+.BestSellingCategory{
+    width: 50%;
+    height: 25vh;
+    
+}
+.table{
+    width: 100%;
+} 
+
+.table th tr{
+    width: 50%;
+}
+.head{
+    display: grid;
+    grid-template-columns: 35% 35% 35%;
+    margin-bottom: .2rem;
+}

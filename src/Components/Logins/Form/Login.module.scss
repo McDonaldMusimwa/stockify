@@ -1,10 +1,21 @@
+.Main{
+  p>span{
+    color: #0090c0;
+  }
+  p >span:hover{
+    cursor: pointer;
+  }
+}
 .input {
   margin: 2rem auto;
   padding: 1rem;
-  width: 90%;
+  width: 100%;
   max-width: 40rem;
   text-align: left;
+ 
 }
+
+
 
 .input label {
   display: block;
@@ -26,8 +37,13 @@
   border-color: #4f005f;
 }
 .Main{
-    margin-left: 4rem;
-    width: 30%;
+    margin-left: 20%rem;
+    width: 50%;
+    img{
+
+      width: 20%;
+    }
+    
 }
 
 .Button {

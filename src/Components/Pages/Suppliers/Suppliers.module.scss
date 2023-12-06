@@ -1,0 +1,37 @@
+.Home {
+    margin-top: 8%;
+    width: 75vw;
+    margin-left: 20%;
+    height: 90vh;
+
+    /* 100% of the viewport height */
+    .Home thead th {
+        position: sticky;
+        top: 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 3px 15px;
+        border: 2px solid #ddd;
+    }
+
+    th {
+        background-color: #b8b6b6;
+        text-align: left;
+    }
+
+    .AddSupplier{
+        background-color: rgb(70, 143, 70);
+        margin: 0 0 15px 0;
+    }
+
+    .AddSupplier:hover{
+        background-color: rgb(141, 168, 141);
+    }
+}

@@ -39,7 +39,7 @@ const options = {
   },
 };
 
-const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'];
+const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'];
 
 
 
@@ -51,7 +51,7 @@ const OrderSummary = () => {
             .then((response) => response.json())
             .then((data) => {
                 const orders= data.filter(order => new Date(order.dateordered).getFullYear() === 2023);
-               
+              
                 const monthlyTotals = {
                     January: 0,
                     February: 0,
@@ -91,6 +91,7 @@ const OrderSummary = () => {
                     monthlyTotals['December'],
                 ];
 
+                
                 setOrderData(monthlyTotalsArray)
                 
             })
@@ -98,6 +99,8 @@ const OrderSummary = () => {
                 console.error('Error:', error);
             });
     }, []);
+
+
     const data = {
         labels,
         datasets: [
